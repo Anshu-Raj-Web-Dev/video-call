@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <div className="home-container">
     <div className="home-box">
-      <h1 className="home-title">Enter Your Name</h1>
+      <h1 className="home-title">Surprise Surprise!!</h1>
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}

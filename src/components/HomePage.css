@@ -1,0 +1,91 @@
+/* HomePage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 1rem;
+}
+
+.home-box {
+    background: #111;
+    padding: 3rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.home-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.home-input {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    background: #222;
+    color: #fff;
+    outline: none;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.home-button {
+    width: 100%;
+    padding: 1rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.home-button:hover {
+    background: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .home-box {
+        padding: 2rem;
+        max-width: 90%;
+    }
+    .home-title {
+        font-size: 1.5rem;
+    }
+    .home-input, .home-button {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+}

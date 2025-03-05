@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import {ZegoUIKitPrebuilt} from "@zegocloud/zego-uikit-prebuilt"
 import { APP_ID, SERVER_SECRET } from './constant'
-import "./VideoPage.css"
+import "./VideoPage.css" 
 
 const VideoPage = () => {
     const {id} = useParams()

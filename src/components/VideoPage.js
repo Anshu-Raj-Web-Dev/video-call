@@ -1,41 +1,43 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import {ZegoUIKitPrebuilt} from "@zegocloud/zego-uikit-prebuilt"
-import { APP_ID, SERVER_SECRET } from './constant'
-import "./VideoPage.css" 
+import React, { useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
+import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
+import { APP_ID, SERVER_SECRET } from "./constant";
+import "./VideoPage.css";
 
 const VideoPage = () => {
-    const {id} = useParams()
-    const roomID = id;
-        let myMeeting = async (element) => {
-            const appID = APP_ID;
-            const serverSecret = SERVER_SECRET;
-            const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID ,serverSecret , roomID , Date.now().toString() , "😉😉")
+  const { id } = useParams();
+  const roomID = id;
+  const videoContainerRef = useRef(null);
 
-            const zp = ZegoUIKitPrebuilt.create(kitToken)
+  useEffect(() => {
+    const initMeeting = async () => {
+      const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+        APP_ID,
+        SERVER_SECRET,
+        roomID,
+        Date.now().toString(),
+        "Your Name"
+      );
 
-            zp.joinRoom({
-                container: element,
-                sharedLinks: [
-                    {
-                        name: 'Personal Link',
-                        url:
-                         window.location.protocol + '//' +
-                         window.location.host + window.location.pathname +
-                        '?roomID=' +
-                        roomID,
-                    },
-                ],
-                scenario: {
-                    mode: ZegoUIKitPrebuilt.GroupCall,
-                },
-            });
-        }
-  return (
-    <div ref={myMeeting} className='video-container '>
-      
-    </div>
-  )
-}
+      const zp = ZegoUIKitPrebuilt.create(kitToken);
+      zp.joinRoom({
+        container: videoContainerRef.current,
+        sharedLinks: [
+          {
+            name: "Personal Link",
+            url: `${window.location.origin}/room/${roomID}`,
+          },
+        ],
+        scenario: {
+          mode: ZegoUIKitPrebuilt.GroupCall,
+        },
+      });
+    };
 
-export default VideoPage
+    initMeeting();
+  }, [roomID]);
+
+  return <div ref={videoContainerRef} className="video-container"></div>;
+};
+
+export default VideoPage;

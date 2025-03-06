@@ -7,8 +7,13 @@ const HomePage = () => {
     const navigate = useNavigate()
 
     const submitHandler = () => {
-        navigate(`/room/${input}`)
-    }
+      if (!input || input.trim() === "") {
+        alert("Please enter a valid room name!");
+        return;
+      }
+      navigate(`/room/${input}`);
+    };
+    
   return (
     <div className="home-container">
     <div className="home-box">
@@ -17,7 +22,7 @@ const HomePage = () => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         type="text"
-        placeholder="Apna naam dalo..."
+        placeholder="Create Room Id"
         className="home-input"
       />
       <button onClick={submitHandler} className="home-button">

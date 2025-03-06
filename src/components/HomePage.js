@@ -26,7 +26,7 @@ const HomePage = () => {
         className="home-input"
       />
       <button onClick={submitHandler} className="home-button">
-        Join Room
+        Create Room
       </button>
     </div>
   </div>

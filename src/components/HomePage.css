@@ -1,51 +1,62 @@
-/* HomePage.css */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-    background-color: #000;
+    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
+    position: relative;
 }
 
-.home-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    padding: 1rem;
-}
-
+/* Glassmorphism Box */
 .home-box {
-    background: #111;
+    position: relative;
+    z-index: 10;
+    background: rgba(30, 30, 30, 0.9);
     padding: 3rem;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
     width: 100%;
     max-width: 500px;
+    min-width: 500px;
+    animation: fadeIn 1s ease-in-out;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Title */
 .home-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
+/* Subtitle */
+.home-subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: #bbb;
+}
+
+/* Input Box */
 .home-input {
     width: 100%;
+    min-height: 50px;
     padding: 1rem;
     border: none;
     border-radius: 8px;
@@ -54,15 +65,45 @@ body {
     background: #222;
     color: #fff;
     outline: none;
-    margin-bottom: 1.5rem;
     font-weight: 300;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
 }
 
+/* Input Focus */
+.home-input:focus {
+    border: 2px solid #666;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Buttons */
 .home-button {
     width: 100%;
     padding: 1rem;
-    background: #fff;
-    color: #000;
+    background: linear-gradient(135deg, #444, #111);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 0.5rem;
+}
+
+/* Button Hover Effect */
+.home-button:hover {
+    background: linear-gradient(135deg, #555, #222);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Random Room Button */
+.home-random-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #333, #111);
+    color: #fff;
     border: none;
     border-radius: 8px;
     font-size: 1.2rem;
@@ -71,8 +112,54 @@ body {
     transition: 0.3s;
 }
 
-.home-button:hover {
-    background: #ddd;
+/* Random Button Hover Effect */
+.home-random-button:hover {
+    background: linear-gradient(135deg, #444, #222);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ddd;
+    animation: fadeBlink 1.5s linear infinite;
+    width: 100%;
+    text-align: center;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 10px 0;
+    border-radius: 8px;
+}
+
+/* Blinking effect */
+@keyframes fadeBlink {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* Disable button when loading */
+.home-button:disabled,
+.home-random-button:disabled {
+    background: #444;
+    cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design */
@@ -82,9 +169,9 @@ body {
         max-width: 90%;
     }
     .home-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
-    .home-input, .home-button {
+    .home-input, .home-button, .home-random-button {
         font-size: 1rem;
         padding: 0.75rem;
     }

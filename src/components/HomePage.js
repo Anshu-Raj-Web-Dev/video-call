@@ -11,9 +11,9 @@ const HomePage = () => {
         alert("Please enter a valid room name!");
         return;
       }
-      navigate(/room/${input});
+      navigate(`/room/${input}`);
     };
-    
+
   return (
     <div className="home-container">
     <div className="home-box">
